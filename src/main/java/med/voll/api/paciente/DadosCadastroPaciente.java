@@ -17,7 +17,7 @@ public record DadosCadastroPaciente(
         @NotBlank
         @Email
         String email,
-        @NotBlank @Pattern(regexp = "\\d{10,14}") //tem de 10 a 14 digitos
+        @NotBlank
         String telefone,
         @NotNull
         @Valid // para validar outro obj que é o dto do endrereço
