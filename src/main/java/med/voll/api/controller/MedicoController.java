@@ -27,7 +27,7 @@ public class MedicoController {
     public Page<DadosListagemMedico> listar
             (@PageableDefault(size = 10, sort={"nome"}) Pageable paginacao){
         //esses parametros podem ser sobrescritos caso sejam passados na url
-        return repository.findAll(paginacao)
+        return repository.findAllByAtivoTrue(paginacao) //encontra os que estão ativos
                 .map(DadosListagemMedico::new);
     }
 
@@ -38,9 +38,11 @@ public class MedicoController {
         medico.atualizarInformacoes(dados);
     }
 
+    //deleta o cadastro tonarndo inativo, e não apagando do banco de dados
     @DeleteMapping("/{id}")
     @Transactional
     public void excluir(@PathVariable Long id){
-        repository.deleteById(id);
+        var medico = repository.getReferenceById(id);
+        medico.excluir();
     }
 }
