@@ -47,6 +47,9 @@ public class Paciente {
         if(dados.endereco() != null){
             this.endereco.atualizarInformacoes(dados.endereco());
         }
+        if(dados.email() != null){
+            this.email = dados.email();
+        }
     }
 
     public void excluir(){

@@ -8,6 +8,7 @@ public record DadosAtualizacaoPaciente (
     Long id,
     String nome,
     String telefone,
+    String email,
     DadosEndereco endereco){
 
 }
