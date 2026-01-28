@@ -1,0 +1,2 @@
+ALTER TABLE pacientes
+MODIFY ativo BIT NOT NULL;

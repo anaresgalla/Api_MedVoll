@@ -3,6 +3,8 @@ package med.voll.api.domain.medico;
 import jakarta.persistence.*;
 import lombok.*;
 import med.voll.api.domain.endereco.Endereco;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Table(name="medicos")
 @Entity(name="Medico")
@@ -13,14 +15,20 @@ import med.voll.api.domain.endereco.Endereco;
 public class Medico {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String email;
     private String telefone;
     private String crm;
+
     @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.VARCHAR)
+    @Column(length = 50)
     private Especialidade especialidade;
+
     @Embedded
     private Endereco endereco;
+
     private boolean ativo;
 
     public Medico(DadosCadastroMedico dados) {

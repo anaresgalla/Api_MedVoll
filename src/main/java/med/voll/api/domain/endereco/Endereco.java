@@ -1,5 +1,6 @@
 package med.voll.api.domain.endereco;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
 
@@ -17,6 +18,8 @@ public class Endereco {
     private String numero;
     private String complemento;
     private String cidade;
+
+    @Column(length = 2)
     private String uf;
 
     // no caso de embeddable, é necessário criar constructor manualmente e não com

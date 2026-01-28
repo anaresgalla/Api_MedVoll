@@ -1,0 +1,1 @@
+ALTER TABLE pacientes MODIFY uf VARCHAR(2) NOT NULL;
